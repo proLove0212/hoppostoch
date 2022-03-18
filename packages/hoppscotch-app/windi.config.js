@@ -50,6 +50,8 @@ export default defineConfig({
       },
       cursor: {
         nsResize: "ns-resize",
+        grab: "grab",
+        grabbing: "grabbing",
       },
     },
   },
