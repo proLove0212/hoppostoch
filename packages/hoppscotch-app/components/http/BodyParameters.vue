@@ -45,11 +45,12 @@
         <span>
           <ButtonSecondary
             svg="grip-vertical"
-            class="cursor-auto text-primary hover:text-primary focus-visible:text-primary"
+            class="cursor-auto text-primary hover:text-primary"
             :class="{
               'draggable-handle group-hover:text-secondaryLight !cursor-grab':
                 index !== workingParams?.length - 1,
             }"
+            tabindex="-1"
           />
         </span>
         <SmartEnvInput
