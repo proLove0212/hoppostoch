@@ -58,6 +58,34 @@
             class="!bg-green-500 !bg-opacity-15 !text-green-500 !hover:bg-opacity-10 !hover:bg-green-400 !hover:text-green-600"
             @click.native="showTeamsModal = true"
           />
+          <tippy
+            ref="accountOptions"
+            interactive
+            trigger="click"
+            theme="popover"
+            arrow
+            :on-shown="() => accountActions.focus()"
+          >
+            <template #trigger>
+              <ButtonPrimary
+                v-tippy="{ theme: 'tooltip' }"
+                :title="t('team.switch_account')"
+                :label="mdAndLarger ? `${currentUser.displayName} \xA0 ▾` : `▾`"
+                svg="user"
+                class="!bg-transparent !py-1.75 !text-accent"
+                outline
+              />
+            </template>
+            <div
+              ref="accountActions"
+              class="flex flex-col focus:outline-none"
+              tabindex="0"
+              @keyup.escape="accountOptions.tippy().hide()"
+              @click="accountOptions.tippy().hide()"
+            >
+              <TeamsAccountSwitcher />
+            </div>
+          </tippy>
           <span class="px-2">
             <tippy
               ref="options"
@@ -68,29 +96,29 @@
               :on-shown="() => tippyActions.focus()"
             >
               <template #trigger>
-                <ProfilePicture
-                  v-if="currentUser.photoURL"
-                  v-tippy="{
-                    theme: 'tooltip',
-                  }"
-                  :url="currentUser.photoURL"
-                  :alt="currentUser.displayName"
-                  :title="currentUser.displayName"
-                  indicator
-                  :indicator-styles="
-                    network.isOnline ? 'bg-green-500' : 'bg-red-500'
-                  "
-                />
-                <ProfilePicture
-                  v-else
+                <div
                   v-tippy="{ theme: 'tooltip' }"
+                  class="inline-flex items-center justify-center cursor-pointer"
                   :title="currentUser.displayName"
-                  :initial="currentUser.displayName"
-                  indicator
-                  :indicator-styles="
-                    network.isOnline ? 'bg-green-500' : 'bg-red-500'
-                  "
-                />
+                >
+                  <ProfilePicture
+                    v-if="currentUser.photoURL"
+                    :url="currentUser.photoURL"
+                    :alt="currentUser.displayName"
+                    indicator
+                    :indicator-styles="
+                      network.isOnline ? 'bg-green-500' : 'bg-red-500'
+                    "
+                  />
+                  <ProfilePicture
+                    v-else
+                    :initial="currentUser.displayName"
+                    indicator
+                    :indicator-styles="
+                      network.isOnline ? 'bg-green-500' : 'bg-red-500'
+                    "
+                  />
+                </div>
               </template>
               <div class="flex flex-col px-2 text-tiny" role="menu">
                 <span class="inline-flex font-semibold truncate">
@@ -213,4 +241,6 @@ const profile = ref<any | null>(null)
 const settings = ref<any | null>(null)
 const logout = ref<any | null>(null)
 const options = ref<any | null>(null)
+const accountOptions = ref<any | null>(null)
+const accountActions = ref<any | null>(null)
 </script>
