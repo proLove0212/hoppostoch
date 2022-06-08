@@ -70,8 +70,16 @@
               <ButtonPrimary
                 v-tippy="{ theme: 'tooltip' }"
                 :title="t('team.switch_account')"
-                :label="mdAndLarger ? `${currentUser.displayName} \xA0 ▾` : `▾`"
-                svg="user"
+                :label="
+                  mdAndLarger
+                    ? `${
+                        workspace.type === 'personal'
+                          ? t('workspace.personal')
+                          : workspace.teamName
+                      } \xA0 ▾`
+                    : `▾`
+                "
+                :svg="workspace.type === 'personal' ? 'user' : 'users'"
                 class="!bg-transparent !py-1.75 !text-accent"
                 outline
               />
@@ -183,6 +191,7 @@ import {
   useToast,
 } from "~/helpers/utils/composables"
 import { invokeAction } from "~/helpers/actions"
+import { workspaceStatus$ } from "~/newstore/Workspace"
 
 const t = useI18n()
 
@@ -243,4 +252,6 @@ const logout = ref<any | null>(null)
 const options = ref<any | null>(null)
 const accountOptions = ref<any | null>(null)
 const accountActions = ref<any | null>(null)
+
+const workspace = useReadonlyStream(workspaceStatus$, null)
 </script>

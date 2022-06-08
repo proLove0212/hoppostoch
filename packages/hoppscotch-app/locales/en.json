@@ -656,5 +656,8 @@
     "message": "Message",
     "protocols": "Protocols",
     "url": "URL"
+  },
+  "workspace": {
+    "personal": "My workspace"
   }
 }
