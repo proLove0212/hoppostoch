@@ -69,7 +69,7 @@
             <template #trigger>
               <ButtonPrimary
                 v-tippy="{ theme: 'tooltip' }"
-                :title="t('team.switch_account')"
+                :title="t('workspace.change')"
                 :label="
                   mdAndLarger
                     ? `${
