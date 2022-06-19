@@ -153,7 +153,6 @@
           :folder="subFolder"
           :folder-index="subFolderIndex"
           :collection-index="collectionIndex"
-          :doc="doc"
           :save-request="saveRequest"
           :collections-type="collectionsType"
           :folder-path="`${folderPath}/${subFolderIndex}`"
@@ -177,7 +176,6 @@
           :folder-name="folder.name"
           :folder-path="folderPath"
           :request-index="index"
-          :doc="doc"
           :picked="picked"
           :save-request="saveRequest"
           :collections-type="collectionsType"
@@ -222,7 +220,6 @@ export default defineComponent({
     folderIndex: { type: Number, default: null },
     collectionIndex: { type: Number, default: null },
     folderPath: { type: String, default: null },
-    doc: Boolean,
     saveRequest: Boolean,
     isFiltered: Boolean,
     collectionsType: { type: Object, default: () => {} },

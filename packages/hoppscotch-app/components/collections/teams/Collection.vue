@@ -30,22 +30,6 @@
       </span>
       <div class="flex">
         <ButtonSecondary
-          v-if="doc && !selected"
-          v-tippy="{ theme: 'tooltip' }"
-          :title="t('import.title')"
-          svg="circle"
-          color="green"
-          @click.native="$emit('select-collection')"
-        />
-        <ButtonSecondary
-          v-if="doc && selected"
-          v-tippy="{ theme: 'tooltip' }"
-          :title="t('action.remove')"
-          svg="check-circle"
-          color="green"
-          @click.native="$emit('unselect-collection')"
-        />
-        <ButtonSecondary
           v-if="collectionsType.selectedTeam.myRole !== 'VIEWER'"
           v-tippy="{ theme: 'tooltip' }"
           svg="file-plus"
@@ -180,7 +164,6 @@
           :folder-index="index"
           :folder-path="`${collectionIndex}/${index}`"
           :collection-index="collectionIndex"
-          :doc="doc"
           :save-request="saveRequest"
           :collections-type="collectionsType"
           :is-filtered="isFiltered"
@@ -204,7 +187,6 @@
           :folder-index="-1"
           :folder-name="collection.name"
           :request-index="request.id"
-          :doc="doc"
           :save-request="saveRequest"
           :collection-i-d="collection.id"
           :collections-type="collectionsType"
@@ -259,9 +241,7 @@ export default defineComponent({
   props: {
     collectionIndex: { type: Number, default: null },
     collection: { type: Object, default: () => {} },
-    doc: Boolean,
     isFiltered: Boolean,
-    selected: Boolean,
     saveRequest: Boolean,
     collectionsType: { type: Object, default: () => {} },
     picked: { type: Object, default: () => {} },

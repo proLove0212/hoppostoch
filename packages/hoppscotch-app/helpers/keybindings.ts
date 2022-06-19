@@ -55,7 +55,6 @@ export const bindings: {
   "alt-r": "navigation.jump.rest",
   "alt-q": "navigation.jump.graphql",
   "alt-w": "navigation.jump.realtime",
-  "alt-d": "navigation.jump.documentation",
   "alt-s": "navigation.jump.settings",
 }
 

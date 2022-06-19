@@ -150,7 +150,6 @@
           :folder-index="index"
           :folder-path="`${collectionIndex}/${String(index)}`"
           :collection-index="collectionIndex"
-          :doc="doc"
           :is-filtered="isFiltered"
           @add-request="$emit('add-request', $event)"
           @add-folder="$emit('add-folder', $event)"
@@ -170,7 +169,6 @@
           :folder-name="collection.name"
           :folder-path="`${collectionIndex}`"
           :request-index="index"
-          :doc="doc"
           @edit-request="$emit('edit-request', $event)"
           @duplicate-request="$emit('duplicate-request', $event)"
           @select="$emit('select', $event)"
@@ -216,7 +214,6 @@ export default defineComponent({
     savingMode: { type: Boolean, default: false },
     collectionIndex: { type: Number, default: null },
     collection: { type: Object, default: () => {} },
-    doc: Boolean,
     isFiltered: Boolean,
   },
   setup() {

@@ -187,9 +187,6 @@ function defineJumpActions() {
   defineActionHandler("navigation.jump.realtime", () => {
     router.push({ path: localePath("/realtime") })
   })
-  defineActionHandler("navigation.jump.documentation", () => {
-    router.push({ path: localePath("/documentation") })
-  })
   defineActionHandler("navigation.jump.settings", () => {
     router.push({ path: localePath("/settings") })
   })

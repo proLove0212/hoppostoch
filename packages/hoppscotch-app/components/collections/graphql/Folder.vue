@@ -138,7 +138,6 @@
           :folder-index="subFolderIndex"
           :folder-path="`${folderPath}/${String(subFolderIndex)}`"
           :collection-index="collectionIndex"
-          :doc="doc"
           :is-filtered="isFiltered"
           @add-request="$emit('add-request', $event)"
           @add-folder="$emit('add-folder', $event)"
@@ -158,7 +157,6 @@
           :folder-path="folderPath"
           :folder-name="folder.name"
           :request-index="index"
-          :doc="doc"
           @edit-request="$emit('edit-request', $event)"
           @duplicate-request="$emit('duplicate-request', $event)"
           @select="$emit('select', $event)"
@@ -207,7 +205,6 @@ export default defineComponent({
     folderIndex: { type: Number, default: null },
     collectionIndex: { type: Number, default: null },
     folderPath: { type: String, default: null },
-    doc: Boolean,
     isFiltered: Boolean,
   },
   setup() {

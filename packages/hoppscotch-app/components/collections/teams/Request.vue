@@ -12,7 +12,7 @@
       <span
         class="flex items-center justify-center w-16 px-2 truncate cursor-pointer"
         :class="getRequestLabelColor(request.method)"
-        @click="!doc ? selectRequest() : {}"
+        @click="selectRequest()"
       >
         <SmartIcon
           v-if="isSelected"
@@ -26,7 +26,7 @@
       </span>
       <span
         class="flex items-center flex-1 min-w-0 py-2 pr-2 cursor-pointer transition group-hover:text-secondaryDark"
-        @click="!doc ? selectRequest() : {}"
+        @click="selectRequest()"
       >
         <span class="truncate" :class="{ 'text-accent': isSelected }">
           {{ request.name }}
@@ -48,12 +48,12 @@
       </span>
       <div class="flex">
         <ButtonSecondary
-          v-if="!saveRequest && !doc"
+          v-if="!saveRequest"
           v-tippy="{ theme: 'tooltip' }"
           svg="rotate-ccw"
           :title="$t('action.restore')"
           class="hidden group-hover:inline-flex"
-          @click.native="!doc ? selectRequest() : {}"
+          @click.native="selectRequest()"
         />
         <span>
           <tippy
@@ -180,7 +180,6 @@ const props = defineProps<{
   folderIndex: number
   folderName?: string
   requestIndex: string
-  doc: boolean
   saveRequest: boolean
   collectionsType: {
     type: "my-collections" | "team-collections"

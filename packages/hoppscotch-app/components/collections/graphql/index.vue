@@ -45,7 +45,6 @@
         :name="collection.name"
         :collection-index="index"
         :collection="collection"
-        :doc="doc"
         :is-filtered="filterText.length > 0"
         :saving-mode="savingMode"
         @edit-collection="editCollection(collection, index)"
@@ -149,7 +148,6 @@ export default defineComponent({
   props: {
     // Whether to activate the ability to pick items (activates 'select' events)
     savingMode: { type: Boolean, default: false },
-    doc: { type: Boolean, default: false },
     picked: { type: Object, default: null },
     // Whether to show the 'New' and 'Import/Export' actions
     showCollActions: { type: Boolean, default: true },

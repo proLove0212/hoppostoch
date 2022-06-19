@@ -30,23 +30,6 @@
       </span>
       <div class="flex">
         <ButtonSecondary
-          v-if="doc && !selected"
-          v-tippy="{ theme: 'tooltip' }"
-          :title="$t('import.title')"
-          svg="circle"
-          color="green"
-          @click.native="$emit('select-collection')"
-        />
-        <ButtonSecondary
-          v-if="doc && selected"
-          v-tippy="{ theme: 'tooltip' }"
-          :title="$t('action.remove')"
-          svg="check-circle"
-          color="green"
-          @click.native="$emit('unselect-collection')"
-        />
-        <ButtonSecondary
-          v-if="!doc"
           v-tippy="{ theme: 'tooltip' }"
           svg="file-plus"
           :title="$t('request.new')"
@@ -58,7 +41,6 @@
           "
         />
         <ButtonSecondary
-          v-if="!doc"
           v-tippy="{ theme: 'tooltip' }"
           svg="folder-plus"
           :title="$t('folder.new')"
@@ -181,7 +163,6 @@
           :folder-index="index"
           :folder-path="`${collectionIndex}/${index}`"
           :collection-index="collectionIndex"
-          :doc="doc"
           :save-request="saveRequest"
           :collections-type="collectionsType"
           :is-filtered="isFiltered"
@@ -204,7 +185,6 @@
           :folder-name="collection.name"
           :folder-path="`${collectionIndex}`"
           :request-index="index"
-          :doc="doc"
           :save-request="saveRequest"
           :collections-type="collectionsType"
           :picked="picked"
@@ -245,9 +225,7 @@ export default defineComponent({
   props: {
     collectionIndex: { type: Number, default: null },
     collection: { type: Object, default: () => {} },
-    doc: Boolean,
     isFiltered: Boolean,
-    selected: Boolean,
     saveRequest: Boolean,
     collectionsType: { type: Object, default: () => {} },
     picked: { type: Object, default: () => {} },

@@ -52,11 +52,6 @@ const primaryNavigation = [
     title: t("navigation.realtime"),
   },
   {
-    target: "documentation",
-    svg: "book-open",
-    title: t("navigation.doc"),
-  },
-  {
     target: "settings",
     svg: "settings",
     title: t("navigation.settings"),

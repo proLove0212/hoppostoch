@@ -6,7 +6,7 @@
         :label="`${$t('collection.my_collections')}`"
       />
       <SmartTab
-        v-if="currentUser && !doc"
+        v-if="currentUser"
         :id="'team-collections'"
         :label="`${$t('collection.team_collections')}`"
       >
@@ -79,7 +79,6 @@ type CollectionTabs = "my-collections" | "team-collections"
 const selectedCollectionTab = ref<CollectionTabs>("my-collections")
 
 defineProps<{
-  doc: boolean
   show: boolean
   collectionsType: {
     type: "my-collections" | "team-collections"
